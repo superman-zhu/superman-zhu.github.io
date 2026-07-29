@@ -312,10 +312,23 @@ footer a:hover{color:var(--accent)}
 .lightbox.shown img{transform:none}
 .lightbox.zoom{place-items:start center}
 .lightbox.zoom img{max-height:none;max-width:min(100%,1500px);cursor:zoom-out}
+
+.lb-close,.lb-nav{position:fixed;background:none;border:0;margin:0;color:#fff;
+  opacity:.55;cursor:pointer;line-height:1;font-family:var(--sans);
+  -webkit-appearance:none;appearance:none;transition:opacity .2s ease}
+.lb-close:hover,.lb-nav:hover{opacity:1}
+.lb-close{bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:1.8rem;padding:.2rem .8rem}
+.lb-nav{top:50%;transform:translateY(-50%);font-size:2.6rem;padding:.5rem 1rem}
+.lb-prev{left:.6rem}
+.lb-next{right:.6rem}
+.lb-count{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);
+  color:#fff;opacity:.5;font-family:var(--mono);font-size:.72rem;letter-spacing:.09em}
+
 @media (max-width:640px){
   .lightbox{padding:3.5rem 2.2rem}
   .lightbox img{max-height:calc(100vh - 7rem)}
   .lb-nav{font-size:2rem;padding:.4rem .4rem}
+  .lb-close{bottom:.9rem;font-size:1.5rem}
 }
 
 </style>
