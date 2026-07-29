@@ -678,6 +678,36 @@ footer a:hover{color:var(--accent)}
         </div>
       </li>
 
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://github.com/superman-zhu/chat-and-play" target="_blank" rel="noopener">Chat &amp; Play: A LAN Chat Platform with Encryption and a Two-Player Game</a></h3>
+          <p class="pub-meta">
+            CSCI-SHU 101 Introduction to Computer and Data Science, NYU Shanghai · Mingyuan Wang
+            <span class="year">Fall 2024</span>
+          </p>
+          <p class="pub-abs">
+            One server, many clients: register, log in, and chat one-on-one over a custom
+            length-prefixed TCP protocol, with the server multiplexing every socket through
+            <code>select()</code>. Messages in a private chat are encrypted with an RSA keypair
+            generated per exchange — key generation, encryption, and decryption written from
+            scratch rather than pulled from a library. The server indexes every message per user
+            so history is searchable, and a Tkinter front end adds Shakespeare sonnet lookup and
+            a two-player Pygame Snake match you can start from the chat window.
+          </p>
+          <div class="shots">
+            <a href="chatandplay-1.png" target="_blank" rel="noopener"><img src="chatandplay-1.png" alt="Login screen"></a>
+            <a href="chatandplay-2.png" target="_blank" rel="noopener"><img src="chatandplay-2.png" alt="Chat window"></a>
+            <a href="chatandplay-3.png" target="_blank" rel="noopener"><img src="chatandplay-3.png" alt="Encrypted message exchange"></a>
+            <a href="chatandplay-4.png" target="_blank" rel="noopener"><img src="chatandplay-4.png" alt="History search"></a>
+            <a href="chatandplay-5.png" target="_blank" rel="noopener"><img src="chatandplay-5.png" alt="Snake minigame"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://github.com/superman-zhu/chat-and-play" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </li>
+
     </ol>
   </section>
 
