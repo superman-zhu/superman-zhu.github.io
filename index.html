@@ -299,6 +299,28 @@ footer a:hover{color:var(--accent)}
   .proj-grid{grid-template-columns:1fr}
   .foot-links{margin-left:0;width:100%}
 }
+
+/* ── Lightbox ──────────────────────────────── */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  padding:5vmin;background:rgba(16,16,14,.9);opacity:0;transition:opacity .25s ease;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.lightbox.open{display:grid}
+.lightbox.shown{opacity:1}
+.lightbox img{max-width:100%;max-height:100%;border-radius:8px;
+  box-shadow:0 30px 70px -20px rgba(0,0,0,.7);
+  transform:scale(.96);transition:transform .3s cubic-bezier(.2,0,0,1)}
+.lightbox.shown img{transform:none}
+.lb-close,.lb-nav{position:absolute;background:none;border:0;color:#fff;
+  cursor:pointer;opacity:.6;line-height:1;padding:.4rem .9rem;transition:opacity .2s ease}
+.lb-close:hover,.lb-nav:hover{opacity:1}
+.lb-close{top:1rem;right:1.2rem;font-size:2rem}
+.lb-nav{top:50%;transform:translateY(-50%);font-size:2.6rem}
+.lb-prev{left:.4rem}
+.lb-next{right:.4rem}
+.lb-count{position:absolute;bottom:1.3rem;left:50%;transform:translateX(-50%);
+  color:#fff;opacity:.55;font-family:var(--mono);font-size:.72rem;letter-spacing:.09em}
+@media (max-width:640px){.lb-nav{font-size:2rem;padding:.4rem .5rem}}
+
 </style>
 </head>
 <body>
@@ -545,6 +567,14 @@ footer a:hover{color:var(--accent)}
 
 </main>
 
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  <span class="lb-count" id="lbCount"></span>
+</div>
+
 <script>
 // Theme: follow the OS by default, allow manual override, remember the choice.
 (function(){
@@ -587,6 +617,55 @@ footer a:hover{color:var(--accent)}
 })();
 
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Lightbox: click a thumbnail to view it full size without leaving the page.
+(function(){
+  var box=document.getElementById('lightbox'),
+      img=document.getElementById('lbImg'),
+      count=document.getElementById('lbCount'),
+      prev=document.getElementById('lbPrev'),
+      next=document.getElementById('lbNext'),
+      group=[], idx=0;
+
+  function show(i){
+    idx=(i+group.length)%group.length;
+    var a=group[idx], thumb=a.querySelector('img');
+    img.src=a.getAttribute('href');
+    img.alt=thumb?thumb.alt:'';
+    count.textContent=group.length>1 ? (idx+1)+' / '+group.length : '';
+  }
+  function open(a){
+    group=Array.prototype.slice.call(a.closest('.shots').querySelectorAll('a'));
+    var many=group.length>1;
+    prev.style.display=next.style.display=many?'':'none';
+    show(group.indexOf(a));
+    box.classList.add('open');
+    requestAnimationFrame(function(){ box.classList.add('shown'); });
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    box.classList.remove('shown');
+    document.body.style.overflow='';
+    setTimeout(function(){ box.classList.remove('open'); img.src=''; },260);
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest) return;
+    var a=e.target.closest('.shots a');
+    if(a){ e.preventDefault(); open(a); }
+  });
+  document.getElementById('lbClose').addEventListener('click',close);
+  prev.addEventListener('click',function(e){ e.stopPropagation(); show(idx-1); });
+  next.addEventListener('click',function(e){ e.stopPropagation(); show(idx+1); });
+  box.addEventListener('click',function(e){ if(e.target===box) close(); });
+  document.addEventListener('keydown',function(e){
+    if(!box.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') show(idx-1);
+    if(e.key==='ArrowRight') show(idx+1);
+  });
+})();
+
 </script>
 </body>
 </html>
