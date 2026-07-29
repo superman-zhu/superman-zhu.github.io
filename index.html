@@ -375,55 +375,76 @@ footer a:hover{color:var(--accent)}
 
     <ol class="pub-list">
 
-      <!-- ▼▼▼ COPY THIS ENTIRE <li> TO ADD ANOTHER PIECE ▼▼▼ -->
-      <li class="pub reveal">
+       <li class="pub reveal">
         <div>
-          <span class="pub-tag">Independent Research</span>
-          <h3 class="pub-title"><a href="#">News Sentiment Analysis and Its Relationship with Market Volatility</a></h3>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="nyc-airbnb-compliance.pdf" target="_blank" rel="noopener">NYC Airbnb Compliance Analysis: Detecting “Shadow Listings” under Local Law 18</a></h3>
           <p class="pub-meta">
-            Business and Economics Honors Program, NYU Shanghai · Advised by Prof. Zhou Xin
-            <span class="year">2026–27</span>
+            TECH-UB 57 Data Science and AI for Business, NYU Stern · Dr. Chris Volinsky
+            <span class="year">Spring 2026</span>
           </p>
           <p class="pub-abs">
-            Two or three sentences: the question you asked, the data and method you used, and
-            what you found. Keep it short — a reader only needs enough to decide whether to
-            open the full paper.
+            New York's Local Law 18 is enforced reactively, and the hosts most worth catching are
+            the ones who edit their listing fields to look compliant. Working from 36,111 Inside
+            Airbnb listings, we built a rule-based proxy label for illegality and trained six
+            classifiers to rank the surface-compliant pool by violation risk; Random Forest reached
+            a test AUC of 0.9892 and was chosen over a marginally better soft-voting ensemble for
+            its SHAP interpretability. A Monte Carlo simulation of audit outcomes, paired with a
+            cost-benefit matrix drawn from the LL18 fine schedule, showed that under a realistic
+            1,000-inspection budget the model-driven audit list hits violations 82.8% of the time
+            against 9.1% for random selection — an incremental $1.84M per cycle. Delivered with a
+            Streamlit dashboard for OSE field dispatch.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Tanzim Ali, Josh Kwon, and Ziyu Tian.
           </p>
           <div class="pub-links">
-            <a class="chip" href="#">PDF</a>
-            <a class="chip" href="#">Slides</a>
-            <a class="chip" href="#">Data</a>
-          </div>
-        </div>
-      </li>
-      <!-- ▲▲▲ COPY UP TO HERE ▲▲▲ -->
-
-      <li class="pub reveal">
-        <div>
-          <span class="pub-tag">Course Paper</span>
-          <h3 class="pub-title"><a href="#">Title of a course paper you are proud of</a></h3>
-          <p class="pub-meta">Course name, NYU Shanghai <span class="year">2026</span></p>
-          <p class="pub-abs">
-            Coursework belongs here. Say what the assignment asked, what you argued or
-            modelled, and what the result was. Label it honestly with the tag above.
-          </p>
-          <div class="pub-links">
-            <a class="chip" href="#">PDF</a>
+            <a class="chip" href="nyc-airbnb-compliance.pdf" target="_blank" rel="noopener">PDF</a>
           </div>
         </div>
       </li>
 
       <li class="pub reveal">
         <div>
-          <span class="pub-tag">Essay</span>
-          <h3 class="pub-title"><a href="#">A shorter essay, note, or market commentary</a></h3>
-          <p class="pub-meta">Self-published <span class="year">2025</span></p>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="forecasting-project-2.pdf" target="_blank" rel="noopener">Forecasting the Invesco QQQ Trust with an ARIMA–GARCH Model</a></h3>
+          <p class="pub-meta">
+            STAT-GB 6018 Forecasting Time Series Data, NYU Stern · Prof. Avi Giloni
+            <span class="year">Dec 2025</span>
+          </p>
           <p class="pub-abs">
-            Blog posts, research notes, and sector write-ups all count. Consistent short-form
-            writing on a topic you know well is often more convincing than one long paper.
+            Fits an ARIMA(2,1,2) model to five years of daily log adjusted close prices for QQQ,
+            then shows that although the residuals are uncorrelated they are not independent —
+            the squared residuals remain significantly autocorrelated. Adding a GARCH(1,1) layer
+            captures the volatility clustering and yields a narrower one-step-ahead 95% forecast
+            interval than the ARIMA-only model, with an empirical failure rate of 5.1% against a
+            nominal 5%. A normal probability plot of the standardised residuals shows the model
+            still does not fully absorb the leptokurtosis in the data.
           </p>
           <div class="pub-links">
-            <a class="chip" href="#">Read</a>
+            <a class="chip" href="forecasting-project-2.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="forecasting-project-1.pdf" target="_blank" rel="noopener">An ARIMA Model for U.S. Total Consumer Credit, 1967–2025</a></h3>
+          <p class="pub-meta">
+            STAT-GB 6018 Forecasting Time Series Data, NYU Stern · Prof. Avi Giloni
+            <span class="year">Nov 2025</span>
+          </p>
+          <p class="pub-abs">
+            Models 58 years of monthly FRED data on total consumer credit owned and securitized.
+            A log transform linearises the exponential growth and a single difference achieves
+            stationarity; AICc selects ARIMA(1,1,1) with a constant, whose parameters are all
+            significant at the 5% level and whose residuals pass Ljung–Box tests at every lag
+            examined. The fitted model forecasts 150 months forward with 95% intervals that widen
+            as expected with the horizon.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="forecasting-project-1.pdf" target="_blank" rel="noopener">PDF</a>
           </div>
         </div>
       </li>
