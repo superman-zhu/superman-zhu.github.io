@@ -212,6 +212,13 @@ h1 em{font-style:italic;color:var(--accent)}
 }
 .chip:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
 
+/* ── Screenshot row ────────────────────────── */
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin:1.1rem 0 0}
+.shots a{display:block;border-radius:7px;overflow:hidden;border:1px solid var(--rule);
+  background:var(--bg-soft);transition:transform .26s cubic-bezier(.4,0,.2,1),box-shadow .26s ease}
+.shots a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.shots img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+
 /* ── Projects ──────────────────────────────── */
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19.5rem,1fr));gap:1.1rem}
 .card{
@@ -459,95 +466,82 @@ footer a:hover{color:var(--accent)}
       <span class="sec-note">Code &amp; analysis</span>
     </div>
 
-    <div class="proj-grid">
+    <ol class="pub-list">
 
-      <!-- ▼▼▼ COPY THIS ENTIRE <a class="card"> TO ADD ANOTHER PROJECT ▼▼▼
-           If a project has no link yet, change <a class="card" href="..."> to
-           <div class="card"> and </a> to </div>. ▼▼▼ -->
-      <a class="card reveal" href="#">
-        <div class="card-top">
-          <span class="card-kind">Quantitative Research</span>
-          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="#" target="_blank" rel="noopener">NYC Shield: Illegal Housing Detector</a></h3>
+          <p class="pub-meta">
+            TECH-UB 57 Data Science and AI for Business, NYU Stern · Prof. Chris Volinsky
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            The modelling pipeline behind the compliance analysis above. Cleans and engineers
+            features from 36,111 Inside Airbnb listings, trains and compares six classifiers,
+            explains the selected Random Forest with SHAP, and runs a Monte Carlo profit
+            simulation to pick an audit threshold. Ships as a Streamlit dashboard that maps
+            high-risk listings and exports a ranked audit list.
+          </p>
+          <div class="stack">
+            <span class="tech">Python</span>
+            <span class="tech">scikit-learn</span>
+            <span class="tech">SHAP</span>
+            <span class="tech">Streamlit</span>
+          </div>
+          <div class="shots">
+            <a href="nycshield-1.png" target="_blank" rel="noopener"><img src="nycshield-1.png" alt="Geospatial risk map"></a>
+            <a href="nycshield-2.png" target="_blank" rel="noopener"><img src="nycshield-2.png" alt="SHAP summary plot"></a>
+            <a href="nycshield-3.png" target="_blank" rel="noopener"><img src="nycshield-3.png" alt="Profit curve"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="#" target="_blank" rel="noopener">Notebook</a>
+            <a class="chip" href="#" target="_blank" rel="noopener">Colab</a>
+          </div>
         </div>
-        <h3 class="card-title">Project Name</h3>
-        <p class="card-desc">
-          One or two sentences on what the project does and why it matters. Avoid "a model
-          built in Python" — say what question it answers and how well it worked.
-        </p>
-        <div class="stack">
-          <span class="tech">Python</span>
-          <span class="tech">pandas</span>
-          <span class="tech">scikit-learn</span>
-        </div>
-        <div class="card-meta">
-          <span><i class="dot"></i>Python</span>
-          <span>2026</span>
-        </div>
-      </a>
-      <!-- ▲▲▲ COPY UP TO HERE ▲▲▲ -->
+      </li>
 
-      <a class="card reveal" href="#">
-        <div class="card-top">
-          <span class="card-kind">Data Science</span>
-          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://github.com/kkrysw/readradar" target="_blank" rel="noopener">ReadRadar: An ML-Powered Book Discovery App</a></h3>
+          <p class="pub-meta">
+            CSCI-UA 473 Fundamentals of Machine Learning, New York University · Prof. Kyunghyun Cho
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            A Streamlit app built on the UCSD Book Graph that lets readers search a 5,000-book
+            catalog by theme, browse it as clusters, and get recommendations from what they
+            have saved. Semantic search runs on Nomic v1.5 embeddings truncated to 384
+            dimensions; recommendations build a recency-weighted persona vector from the
+            favorites list so newer picks pull the results harder; and the catalog is grouped
+            into 24 "Reading Neighborhoods" by spherical k-means++. Retrieval, recommendation
+            scoring, and clustering are all implemented directly in NumPy rather than called
+            from a library. A separate Claude-backed pipeline reads twelve rating-balanced
+            reviews per book and returns grounded controversy tags and a short reader verdict.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Krystal Wu, Bruce Wang, Benji Hua, Yizhen.
+          </p>
+          <div class="stack">
+            <span class="tech">Python</span>
+            <span class="tech">NumPy</span>
+            <span class="tech">Streamlit</span>
+            <span class="tech">Sentence Transformers</span>
+            <span class="tech">Polars</span>
+          </div>
+          <div class="shots">
+            <a href="readradar-1.png" target="_blank" rel="noopener"><img src="readradar-1.png" alt="Thematic search results"></a>
+            <a href="readradar-2.png" target="_blank" rel="noopener"><img src="readradar-2.png" alt="Recommendations page"></a>
+            <a href="readradar-3.png" target="_blank" rel="noopener"><img src="readradar-3.png" alt="Reading Neighborhoods"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://github.com/kkrysw/readradar" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
-        <h3 class="card-title">Second Project</h3>
-        <p class="card-desc">
-          Strong coursework belongs here. Say what you owned, what data you worked with, and
-          what the final result was.
-        </p>
-        <div class="stack">
-          <span class="tech">R</span>
-          <span class="tech">SQL</span>
-          <span class="tech">Minitab</span>
-        </div>
-        <div class="card-meta">
-          <span><i class="dot"></i>R</span>
-          <span>2026</span>
-        </div>
-      </a>
+      </li>
 
-      <a class="card reveal" href="#">
-        <div class="card-top">
-          <span class="card-kind">Financial Modelling</span>
-          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-        </div>
-        <h3 class="card-title">Third Project</h3>
-        <p class="card-desc">
-          Valuation models, backtests, and equity research write-ups all fit here. Attach the
-          spreadsheet or the deck so a reader can check the work.
-        </p>
-        <div class="stack">
-          <span class="tech">Excel</span>
-          <span class="tech">Python</span>
-        </div>
-        <div class="card-meta">
-          <span><i class="dot"></i>Excel</span>
-          <span>2025</span>
-        </div>
-      </a>
-
-      <a class="card reveal" href="#">
-        <div class="card-top">
-          <span class="card-kind">Tool / Script</span>
-          <svg class="card-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M17 7H8M17 7v9"/></svg>
-        </div>
-        <h3 class="card-title">Fourth Project</h3>
-        <p class="card-desc">
-          Small scripts, scrapers, cleaning pipelines, and visualisations all count. Small and
-          finished beats large and abandoned.
-        </p>
-        <div class="stack">
-          <span class="tech">Python</span>
-          <span class="tech">Jupyter</span>
-        </div>
-        <div class="card-meta">
-          <span><i class="dot"></i>Jupyter</span>
-          <span>2025</span>
-        </div>
-      </a>
-
-    </div>
+    </ol>
   </section>
 
   <!-- ═══════════════ FOOTER ═══════════════ -->
