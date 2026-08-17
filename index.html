@@ -620,6 +620,45 @@ footer a:hover{color:var(--accent)}
 
       <li class="pub reveal">
         <div>
+          <span class="pub-tag">Internship Project</span>
+          <h3 class="pub-title"><a href="qrf-etf-rotation.ipynb" download="qrf-etf-rotation.ipynb" target="_blank" rel="noopener">Reproducing a QRF Distribution-Forecasting ETF Rotation Strategy</a></h3>
+          <p class="pub-meta">
+            Summer Internship, Fullgoal Fund Management Co.,ltd.
+            <span class="year">Summer 2026</span>
+          </p>
+          <p class="pub-abs">
+            Reproduces a sell-side quant research report (China Galaxy Securities,
+            Dec 2025) on a tech-sector ETF rotation strategy driven by Quantile
+            Regression Forest (QRF) return-distribution forecasts. Without Wind
+            terminal access, the pipeline is built end-to-end on structurally
+            identical simulated data (GBM-based price paths, synthetic
+            Fama-French five-factor series) so the full algorithmic logic can be
+            validated ahead of a real-data swap-in. The framework rolls a
+            104-week QRF regression on the five-factor inputs to forecast each
+            index's next-week return distribution, ranks tech/manufacturing
+            sector indices on a 7-indicator composite score (return,
+            risk-adjusted return, win rate) to pick a rotating top-5 basket,
+            sizes overall tech exposure against a gold-ETF hedge via a
+            MACD/volatility-percentile regime signal, and optimizes basket
+            weights via GARCH-standardized residuals fed into a copula joint
+            distribution under a second-order stochastic dominance (SSD)
+            constraint for tail-risk control. Because inputs are simulated
+            random walks, backtest performance figures are explicitly flagged
+            as not meaningful; the notebook instead documents a full
+            replacement checklist for substituting real Wind data once
+            available.
+          </p>
+          <p class="pub-abs">
+            Note that the notebook is written in Chinese.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="qrf-etf-rotation.ipynb" download="qrf-etf-rotation.ipynb" target="_blank" rel="noopener">Notebook (in Chinese)</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
           <span class="pub-tag">Research Program</span>
           <h3 class="pub-title"><a href="COLAB_URL_HERE" target="_blank" rel="noopener">PhysArena: A Benchmark for AI Coding Agents on Physics Discovery Tasks</a></h3>
           <p class="pub-meta">
