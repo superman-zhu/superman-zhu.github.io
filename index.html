@@ -590,28 +590,24 @@ footer a:hover{color:var(--accent)}
           <p class="pub-abs">
             Reproduces a sell-side quant research report on combining long/short
             return signals with market-regime modeling in a GRU-based stock
-            selection framework. Given the data constraints of an individual
-            reproduction relative to the original report (2010-2026, full A-share
-            universe, 38 high-frequency features), this version works with a
-            substantially reduced dataset: CSI 300 constituents (~290 stocks),
-            roughly 2 years of daily data, and a minute-bar feature set covering
-            only 6 sample stocks over ~6 months.
-          </p>
-          <p class="pub-abs">
-            Model construction follows the report's full progression: a baseline
-            single-path GRU on daily price/volume-derived features, a multi-task
-            variant with a 5-day auxiliary head reconciled via PCGrad gradient
-            surgery, and a path-supervised variant that adds step-wise return
-            targets across the input window. Layers on two market-regime
-            branches — an endogenous branch that infers latent regimes from the
-            cross-sectional structure of stock representations and residualizes
-            out common-state exposure via a mixture-of-experts head, and an
-            external branch that conditions stock representations on index-level
-            market data through FiLM modulation — plus a combined variant merging
-            both. Each stage is evaluated with Rank IC and decile long-short
-            portfolio tests. The high-frequency demo dataset is used separately
-            to validate the incremental value of a dual-path (low-frequency +
-            high-frequency) GRU extension.
+            selection framework, using a reduced dataset relative to the original
+            report (2010-2026, full A-share universe) — CSI 300 constituents
+            (~290 stocks), ~2 years of daily data, and a minute-bar feature set
+            covering 6 sample stocks over ~6 months. Builds up the model in
+            stages: a baseline single-path GRU on daily price/volume features, a
+            multi-task variant with a 5-day auxiliary head reconciled via PCGrad
+            gradient surgery, and a path-supervised variant adding step-wise
+            return targets across the input window. Layers on two market-regime
+            branches — an endogenous branch inferring latent regimes from the
+            cross-sectional structure of stock representations, and an external
+            branch conditioning representations on index-level data via FiLM
+            modulation — plus a combined variant. Rank IC improves monotonically
+            across stages, but decile long-short portfolios and a simplified
+            index-enhancement backtest tell a more mixed story, with only the
+            baseline model achieving positive risk-adjusted returns — a gap
+            likely driven by the reduced sample size. The high-frequency subset
+            separately shows a clear, statistically significant gain from the
+            dual-path (low + high frequency) extension.
           </p>
           <p class="pub-abs">
             Note that the notebook is written in Chinese.
