@@ -614,6 +614,51 @@ footer a:hover{color:var(--accent)}
       <li class="pub reveal">
         <div>
           <span class="pub-tag">Internship Project</span>
+          <h3 class="pub-title"><a href="https://github.com/superman-zhu/Quant-Agent" target="_blank" rel="noopener">Quant-Agent: An LLM Pipeline for Reproducing Quant Research Reports into Runnable Backtest Code</a></h3>
+          <p class="pub-meta">
+            Summer Internship, Fullgoal Fund Management Co.,ltd.
+            <span class="year">Summer 2026</span>
+          </p>
+          <p class="pub-abs">
+            Independent project built end-to-end during the internship: a pipeline that turns a
+            Chinese sell-side quant research report (PDF) into runnable, self-healing backtest code.
+            A LangGraph state machine wires together five LLM-driven stages — a parsing agent that
+            extracts a structured strategy schema (factors, data requirements, backtest parameters,
+            the report's own disclosed performance numbers) from unstructured report text; a data
+            agent that auto-fetches required market data from an internal Doris warehouse with
+            month-level adaptive chunking to avoid silent row-limit truncation on multi-year
+            full-market queries, falling back to manual upload when a field isn't available; a
+            code-generation agent that implements the strategy step-by-step against the parsed
+            schema; a sandboxed execution agent with syntax-checked self-heal retries and
+            rule-based fake-success detection (catching all-zero metrics, NaN, impossible
+            drawdowns, and equity-curve magnitude blowups); and an iterative refinement agent that
+            diagnoses the gap between reproduced results and the report's disclosed performance and
+            rewrites the generation prompt accordingly. Applied to a structured multi-factor
+            risk-model report from Huatai Securities, the pipeline reproduces the full 2011–2019
+            backtest end-to-end but surfaces a genuine methodological gap: reproduced excess return
+            stays near zero against the report's claimed 17–23%, isolating the limits of
+            prompt-driven strategy reproduction versus true alpha-signal fidelity.
+          </p>
+          <p class="pub-abs">
+            Note that the codebase, web interface, and generated notebooks are written in Chinese.
+          </p>
+          <div class="shots">
+            <a href="quant-agent-1.png" target="_blank" rel="noopener"><img src="quant-agent-1.png" alt="Five-agent LangGraph pipeline architecture: parser, data, code, executor, and iterative-refinement agents"></a>
+            <a href="quant-agent-2.png" target="_blank" rel="noopener"><img src="quant-agent-2.png" alt="Sandboxed execution flow with syntax pre-check self-heal retries and rule-based fake-success detection"></a>
+            <a href="quant-agent-3.png" target="_blank" rel="noopener"><img src="quant-agent-3.png" alt="Streamlit dashboard showing backtest results, equity curve, and metrics"></a>
+            <a href="quant-agent-4.png" target="_blank" rel="noopener"><img src="quant-agent-4.png" alt="Multi-round iterative refinement comparison against the report's disclosed performance"></a>
+            <a href="quant-agent-5.png" target="_blank" rel="noopener"><img src="quant-agent-5.png" alt="Data pipeline fix: full-market coverage expanded from 13 months to 9 years after resolving a silent query truncation bug"></a>
+            <a href="quant-agent-6.png" target="_blank" rel="noopener"><img src="quant-agent-6.png" alt="Case study report-fidelity gap: reproduced excess return versus the report's disclosed performance"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://github.com/superman-zhu/Quant-Agent" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Internship Project</span>
           <h3 class="pub-title"><a href="gru-stock-selection.ipynb" download="gru-stock-selection.ipynb" target="_blank" rel="noopener">Reproducing a GRU-Based Deep Learning Stock Selection Model</a></h3>
           <p class="pub-meta">
             Summer Internship, Fullgoal Fund Management Co.,ltd.
