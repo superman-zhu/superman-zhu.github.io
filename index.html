@@ -653,7 +653,7 @@ footer a:hover{color:var(--accent)}
             A LangGraph state machine wires together five LLM-driven stages — a parsing agent that
             extracts a structured strategy schema (factors, data requirements, backtest parameters,
             the report's own disclosed performance numbers) from unstructured report text; a data
-            agent that auto-fetches required market data from an internal Doris warehouse with
+            agent that auto-fetches required market data from an internal data warehouse with
             month-level adaptive chunking to avoid silent row-limit truncation on multi-year
             full-market queries, falling back to manual upload when a field isn't available; a
             code-generation agent that implements the strategy step-by-step against the parsed
