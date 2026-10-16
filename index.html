@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============ [EDIT 1] Tab title & search-engine description ============ -->
+<title>Jiaqi Zhu — NYU Shanghai</title>
+<meta name="description" content="Jiaqi Zhu, undergraduate at NYU Shanghai studying Business and Finance & Data Science. Writing and selected projects.">
+<meta name="author" content="Jiaqi Zhu">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,300;1,6..72,400&family=Inter:wght@400;450;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ═══════════════════════════════════════════════════
+   Design tokens — to change the accent colour,
+   edit the single --accent line below.
+   ═══════════════════════════════════════════════════ */
+:root{
+  --bg:            #fdfdfc;
+  --bg-soft:       #f6f5f2;
+  --bg-card:       #ffffff;
+  --ink:           #1a1a18;
+  --ink-2:         #4a4a46;
+  --ink-3:         #85857e;
+  --rule:          #e4e2dc;
+  --rule-soft:     #eeece7;
+  --accent:        #57068c;   /* NYU violet — #7c2d3a = crimson, #1e3a5f = navy */
+  --accent-soft:   #f2ecf7;
+  --shadow:        0 1px 2px rgba(26,26,24,.04), 0 8px 24px -12px rgba(26,26,24,.10);
+  --shadow-lift:   0 2px 4px rgba(26,26,24,.05), 0 18px 40px -16px rgba(26,26,24,.16);
+  --serif: "Newsreader", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --sans:  "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono:  "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+html[data-theme="dark"]{
+  --bg:            #131312;
+  --bg-soft:       #1b1b19;
+  --bg-card:       #1c1c1a;
+  --ink:           #f0efec;
+  --ink-2:         #b8b6b0;
+  --ink-3:         #7e7c76;
+  --rule:          #2e2e2b;
+  --rule-soft:     #262624;
+  --accent:        #c39fe0;
+  --accent-soft:   #241b2c;
+  --shadow:        0 1px 2px rgba(0,0,0,.3), 0 8px 24px -12px rgba(0,0,0,.5);
+  --shadow-lift:   0 2px 4px rgba(0,0,0,.35), 0 18px 40px -16px rgba(0,0,0,.6);
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;scroll-padding-top:5rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:var(--sans);font-size:16.5px;line-height:1.72;
+  font-weight:400;letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  transition:background .35s ease,color .35s ease;
+}
+img{max-width:100%;display:block}
+a{color:inherit}
+
+/* ── Navigation ─────────────────────────────── */
+.nav{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:saturate(180%) blur(14px);
+  -webkit-backdrop-filter:saturate(180%) blur(14px);
+  background:color-mix(in srgb, var(--bg) 82%, transparent);
+  border-bottom:1px solid transparent;transition:border-color .3s ease;
+}
+.nav.scrolled{border-bottom-color:var(--rule-soft)}
+.nav-in{
+  max-width:1080px;margin:0 auto;padding:.95rem 2rem;
+  display:flex;align-items:center;gap:2rem;
+}
+.nav-mark{
+  font-family:var(--serif);font-size:1.06rem;font-weight:500;
+  letter-spacing:-.01em;text-decoration:none;white-space:nowrap;
+}
+.nav-mark span{color:var(--accent)}
+.nav-links{display:flex;gap:1.7rem;margin-left:auto;align-items:center}
+.nav-links a{
+  font-size:.845rem;font-weight:450;color:var(--ink-2);text-decoration:none;
+  letter-spacing:.01em;position:relative;padding:.2rem 0;transition:color .2s ease;
+}
+.nav-links a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:1px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .28s cubic-bezier(.4,0,.2,1);
+}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{transform:scaleX(1)}
+.theme-btn{
+  background:none;border:1px solid var(--rule);border-radius:99px;
+  width:2rem;height:2rem;display:grid;place-items:center;cursor:pointer;
+  color:var(--ink-2);padding:0;transition:all .22s ease;flex:none;
+}
+.theme-btn:hover{border-color:var(--ink-3);color:var(--ink);transform:rotate(-18deg)}
+.theme-btn svg{width:.95rem;height:.95rem}
+
+/* ── Layout & section headers ───────────────── */
+.wrap{max-width:1080px;margin:0 auto;padding:0 2rem}
+section{padding:5.5rem 0;border-top:1px solid var(--rule-soft)}
+section:first-of-type{border-top:none}
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin:0 0 2.75rem}
+.sec-num{
+  font-family:var(--mono);font-size:1rem;color:var(--accent);
+  letter-spacing:.12em;font-weight:500;flex:none;padding-top:.05rem;
+}
+.sec-title{
+  font-family:var(--serif);font-size:clamp(1.55rem,3.4vw,2rem);
+  font-weight:400;letter-spacing:-.02em;margin:0;line-height:1.15;
+}
+.sec-note{font-size:.83rem;color:var(--ink-3);margin-left:auto;flex:none;padding-top:.35rem}
+
+/* ── Hero ──────────────────────────────────── */
+.hero{padding:clamp(4rem,10vw,7.5rem) 0 5rem}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:4.5rem;align-items:start}
+.eyebrow{
+  font-family:var(--mono);font-size:.705rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--ink-3);margin:0 0 1.5rem;
+  display:flex;align-items:center;gap:.7rem;
+}
+.eyebrow::after{content:"";height:1px;flex:1;background:var(--rule);max-width:5rem}
+h1{
+  font-family:var(--serif);font-weight:400;
+  font-size:clamp(2.6rem,6.4vw,4.15rem);line-height:1.02;
+  letter-spacing:-.035em;margin:0 0 1.6rem;
+}
+h1 em{font-style:italic;color:var(--accent)}
+.lede{
+  font-size:1.115rem;line-height:1.68;color:var(--ink-2);
+  max-width:36rem;margin:0 0 2.3rem;font-weight:400;
+}
+.lede strong{color:var(--ink);font-weight:500}
+.cta-row{display:flex;flex-wrap:wrap;gap:.65rem;align-items:center}
+.btn{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.87rem;font-weight:500;text-decoration:none;
+  padding:.62rem 1.15rem;border-radius:7px;
+  border:1px solid var(--rule);color:var(--ink);
+  transition:all .22s cubic-bezier(.4,0,.2,1);
+}
+.btn svg{width:.92rem;height:.92rem;opacity:.65}
+.btn:hover{border-color:var(--ink-3);transform:translateY(-1.5px);box-shadow:var(--shadow)}
+.btn-primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn-primary svg{opacity:.8}
+.btn-primary:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ── Portrait & fact list ──────────────────── */
+.portrait{
+  aspect-ratio:1/1.16;border-radius:10px;overflow:hidden;
+  background:linear-gradient(150deg,var(--accent-soft),var(--bg-soft));
+  border:1px solid var(--rule);display:grid;place-items:center;
+  box-shadow:var(--shadow);position:relative;
+}
+.portrait img{width:100%;height:100%;object-fit:cover}
+.portrait-ph{
+  font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+  color:var(--ink-3);text-align:center;line-height:1.9;padding:1rem;
+}
+.facts{margin:1.4rem 0 0;font-size:.845rem;line-height:1.55}
+.fact{display:flex;gap:.6rem;padding:.6rem 0;border-bottom:1px solid var(--rule-soft)}
+.fact:last-child{border-bottom:none}
+.fact dt{
+  font-family:var(--mono);font-size:.63rem;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--ink-3);flex:none;width:4.3rem;padding-top:.24rem;
+}
+.fact dd{margin:0;color:var(--ink-2);min-width:0;word-break:break-word}
+.fact a{text-decoration:none;border-bottom:1px solid var(--rule);transition:color .2s,border-color .2s}
+.fact a:hover{color:var(--accent);border-color:var(--accent)}
+
+/* ── Writing list ──────────────────────────── */
+.pub-list{list-style:none;margin:0;padding:0;counter-reset:pub}
+.pub{
+  display:grid;grid-template-columns:2.6rem minmax(0,1fr);gap:1.4rem;
+  padding:1.75rem 0;border-bottom:1px solid var(--rule-soft);
+}
+.pub:last-child{border-bottom:none}
+.pub::before{
+  counter-increment:pub;content:counter(pub,decimal-leading-zero);
+  font-family:var(--mono);font-size:.78rem;color:var(--ink-3);
+  padding-top:.32rem;font-weight:500;
+}
+.pub-tag{
+  display:inline-block;font-family:var(--mono);font-size:.635rem;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--accent);
+  background:var(--accent-soft);padding:.2rem .5rem;border-radius:4px;
+  margin-bottom:.6rem;font-weight:500;
+}
+.pub-title{
+  font-family:var(--serif);font-size:1.235rem;line-height:1.35;
+  font-weight:500;letter-spacing:-.015em;margin:0 0 .45rem;
+}
+.pub-title a{
+  text-decoration:none;background-image:linear-gradient(var(--accent),var(--accent));
+  background-size:0 1px;background-repeat:no-repeat;background-position:0 100%;
+  transition:background-size .3s cubic-bezier(.4,0,.2,1);padding-bottom:1px;
+}
+.pub-title a:hover{background-size:100% 1px;color:var(--accent)}
+.pub-meta{font-family:var(--serif);font-style:italic;font-size:.93rem;color:var(--ink-2);margin:0}
+.pub-meta .year{display:block;margin-top:.2rem;font-style:normal;font-family:var(--mono);font-size:.78rem;color:var(--ink-3)}
+.pub-abs{font-size:.895rem;color:var(--ink-2);margin:.75rem 0 0;line-height:1.65}
+.pub-links{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.9rem}
+.chip{
+  font-family:var(--mono);font-size:.685rem;letter-spacing:.04em;
+  text-decoration:none;color:var(--ink-2);border:1px solid var(--rule);
+  padding:.24rem .58rem;border-radius:5px;transition:all .2s ease;
+}
+.chip:hover{color:var(--accent);border-color:var(--accent);background:var(--accent-soft)}
+
+/* ── Screenshot row ────────────────────────── */
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem;margin:1.1rem 0 0}
+.shots a{display:block;border-radius:7px;overflow:hidden;border:1px solid var(--rule);
+  background:var(--bg-soft);transition:transform .26s cubic-bezier(.4,0,.2,1),box-shadow .26s ease}
+.shots a:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+.shots img{width:100%;aspect-ratio:16/10;object-fit:cover;display:block}
+
+/* ── Projects ──────────────────────────────── */
+.proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(19.5rem,1fr));gap:1.1rem}
+.card{
+  background:var(--bg-card);border:1px solid var(--rule);border-radius:11px;
+  padding:1.6rem 1.65rem 1.4rem;display:flex;flex-direction:column;
+  text-decoration:none;position:relative;overflow:hidden;
+  transition:transform .28s cubic-bezier(.4,0,.2,1),box-shadow .28s ease;
+}
+.card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left;
+  transition:transform .34s cubic-bezier(.4,0,.2,1);
+}
+.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lift)}
+.card:hover::before{transform:scaleX(1)}
+.card-top{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.9rem}
+.card-kind{
+  font-family:var(--mono);font-size:.635rem;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--ink-3);
+}
+.card-arrow{width:.95rem;height:.95rem;color:var(--ink-3);flex:none;transition:all .26s ease}
+.card:hover .card-arrow{color:var(--accent);transform:translate(2.5px,-2.5px)}
+.card-title{
+  font-family:var(--serif);font-size:1.16rem;font-weight:500;
+  letter-spacing:-.015em;margin:0 0 .5rem;line-height:1.3;
+}
+.card-desc{font-size:.885rem;color:var(--ink-2);margin:0 0 1.15rem;line-height:1.62;flex:1}
+.stack{display:flex;flex-wrap:wrap;gap:.35rem}
+.tech{
+  font-family:var(--mono);font-size:.655rem;letter-spacing:.03em;
+  color:var(--ink-3);background:var(--bg-soft);border:1px solid var(--rule-soft);
+  padding:.2rem .5rem;border-radius:4px;
+}
+.card-meta{
+  display:flex;gap:1.1rem;margin-top:1rem;padding-top:.85rem;
+  border-top:1px solid var(--rule-soft);
+  font-family:var(--mono);font-size:.665rem;color:var(--ink-3);
+}
+.card-meta span{display:flex;align-items:center;gap:.32rem}
+.dot{width:.5rem;height:.5rem;border-radius:99px;background:var(--accent);flex:none}
+
+/* ── Footer ────────────────────────────────── */
+footer{
+  border-top:1px solid var(--rule-soft);padding:3rem 0 3.5rem;
+  display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;
+  font-size:.82rem;color:var(--ink-3);
+}
+footer a{color:var(--ink-2);text-decoration:none;transition:color .2s ease}
+footer a:hover{color:var(--accent)}
+.foot-links{display:flex;gap:1.3rem;margin-left:auto}
+
+/* ── Entrance animation ────────────────────── */
+.reveal{opacity:0;transform:translateY(14px)}
+.reveal.in{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,0,0,1),transform .7s cubic-bezier(.2,0,0,1)}
+@media (prefers-reduced-motion:reduce){
+  .reveal{opacity:1!important;transform:none!important}
+  *{transition-duration:.01ms!important;animation-duration:.01ms!important}
+}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+
+/* ── Responsive ────────────────────────────── */
+@media (max-width:860px){
+  .hero-grid{grid-template-columns:1fr;gap:2.5rem}
+  .portrait{max-width:12rem;aspect-ratio:1/1.1}
+  .facts{max-width:22rem}
+}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap,.nav-in{padding-left:1.35rem;padding-right:1.35rem}
+  section{padding:3.75rem 0}
+  .hero{padding:2.75rem 0 3.5rem}
+  .nav-links{gap:1.1rem}
+  .nav-links a{font-size:.8rem}
+  .nav-links .hide-sm{display:none}
+  .sec-note{display:none}
+  .pub{grid-template-columns:1fr;gap:0}
+  .pub::before{display:block;margin-bottom:.5rem;padding-top:0}
+  .proj-grid{grid-template-columns:1fr}
+  .foot-links{margin-left:0;width:100%}
+}
+
+/* ── Lightbox ──────────────────────────────── */
+.lightbox{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+  padding:4.5rem 3.5rem;background:rgba(16,16,14,.9);opacity:0;transition:opacity .25s ease;
+  backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);overflow:auto}
+.lightbox.open{display:grid}
+.lightbox.shown{opacity:1}
+.lightbox img{max-width:100%;max-height:calc(100vh - 9rem);width:auto;height:auto;
+  border-radius:8px;box-shadow:0 30px 70px -20px rgba(0,0,0,.7);cursor:zoom-in;
+  transform:scale(.96);transition:transform .3s cubic-bezier(.2,0,0,1)}
+.lightbox.shown img{transform:none}
+.lightbox.zoom{place-items:start center}
+.lightbox.zoom img{max-height:none;max-width:min(100%,1500px);cursor:zoom-out}
+
+.lb-close,.lb-nav{position:fixed;background:none;border:0;margin:0;color:#fff;
+  opacity:.55;cursor:pointer;line-height:1;font-family:var(--sans);
+  -webkit-appearance:none;appearance:none;transition:opacity .2s ease}
+.lb-close:hover,.lb-nav:hover{opacity:1}
+.lb-close{bottom:1.2rem;left:50%;transform:translateX(-50%);font-size:1.8rem;padding:.2rem .8rem}
+.lb-nav{top:50%;transform:translateY(-50%);font-size:2.6rem;padding:.5rem 1rem}
+.lb-prev{left:.6rem}
+.lb-next{right:.6rem}
+.lb-count{position:fixed;top:1.5rem;left:50%;transform:translateX(-50%);
+  color:#fff;opacity:.5;font-family:var(--mono);font-size:.72rem;letter-spacing:.09em}
+
+@media (max-width:640px){
+  .lightbox{padding:3.5rem 2.2rem}
+  .lightbox img{max-height:calc(100vh - 7rem)}
+  .lb-nav{font-size:2rem;padding:.4rem .4rem}
+  .lb-close{bottom:.9rem;font-size:1.5rem}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ═══════════════ NAV ═══════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#top" class="nav-mark">Jiaqi&nbsp;Zhu<span>.</span></a>
+    <div class="nav-links">
+      <a href="#writing">Writing</a>
+      <a href="#projects">Projects</a>
+      <!-- [EDIT 2] Upload your CV as cv_2.pdf, then this link works as-is -->
+      <a href="cv_2.pdf" class="hide-sm" target="_blank" rel="noopener">CV</a>
+      <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+          <path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow">NYU Shanghai · Class of 2027</p>
+
+        <h1>Jiaqi Zhu<br><em>undergraduate</em> work.</h1>
+
+        <!-- [EDIT 3] Rewrite this bio in your own voice — 2 to 3 sentences -->
+        <p class="lede">
+          I am an undergraduate at NYU Shanghai, studying <strong>Business and Finance</strong> and <strong>Data Science</strong>.
+          This site collects the writing and projects I have produced as an undergraduate.
+        </p>
+
+        <div class="cta-row">
+          <a href="cv_2.pdf" class="btn btn-primary" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v13m0 0l-4.5-4.5M12 16l4.5-4.5M4 20h16"/>
+            </svg>
+            Curriculum Vitae
+          </a>
+          <a href="https://www.linkedin.com/in/jiaqi-zhu-22a866370/" class="btn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.07 2.07 0 110-4.14 2.07 2.07 0 010 4.14zm1.78 13.02H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
+            LinkedIn
+          </a>
+          <a href="mailto:jz6553@nyu.edu" class="btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3 7l9 6 9-6"/>
+            </svg>
+            Email
+          </a>
+        </div>
+      </div>
+
+      <aside>
+        <!-- [EDIT 4] Add your photo: drop photo.jpg next to this file, then replace
+             this whole div with: <div class="portrait"><img src="photo.jpg" alt="Jiaqi Zhu"></div> -->
+        <div class="portrait"><img src="photo.jpg" alt="Jiaqi Zhu"></div>
+
+        <dl class="facts">
+          <div class="fact"><dt>Major</dt><dd>Business and Finance &amp; Data Science</dd></div>
+          <div class="fact"><dt>Focus</dt><dd>Quantitative research, Financial Engineering</dd></div>
+          <div class="fact"><dt>Email</dt><dd><a href="mailto:jz6553@nyu.edu">jz6553@nyu.edu</a></dd></div>
+          <div class="fact"><dt>Based</dt><dd>Shanghai, China</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ═══════════════ WRITING ═══════════════ -->
+  <section id="writing">
+    <div class="sec-head reveal">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Selected Writings</h2>
+    </div>
+
+    <ol class="pub-list">
+
+       <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Research Proposal</span>
+          <h3 class="pub-title"><a href="financial-news-text-processing-proposal.pdf" target="_blank" rel="noopener">Does It Matter How Financial News Text Is Processed? A Comparison of Text-Processing Methods for Incremental Volatility Prediction in the Chinese Stock Market</a></h3>
+          <p class="pub-meta">
+            Business and Economics Honors Program, NYU Shanghai · Advisor: Dr. Xin Zhou, Co-Director of Volatility Institute, NYU Shanghai
+            <span class="year">2026–2027</span>
+          </p>
+          <p class="pub-abs">
+            This proposal outlines a research design that systematically compares three distinct
+            text-processing methods — a finance-specific dictionary with tf-idf weighting, a
+            PCA-based factor, and a contextual FinBERT score — for their incremental predictive
+            power on the short-term realized volatility (RV) of major Chinese stock indices, within
+            a unified Heterogeneous Autoregressive Realized Volatility (HAR-RV) time-series
+            benchmark. While the relationship between financial-text sentiment and asset prices has
+            been studied extensively, a systematic, multi-method comparison of text-processing
+            techniques within a rigorous volatility forecasting framework remains an acknowledged
+            gap in the literature. This study addresses that gap directly, using a panel of Chinese
+            stock indices, and further evaluates whether any incremental statistical predictive
+            power translates into measurable economic value through a volatility-timing trading
+            strategy and a Value-at-Risk (VaR) capital-efficiency analysis.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="financial-news-text-processing-proposal.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+       <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Research Program</span>
+          <h3 class="pub-title"><a href="physarena-benchmark.pdf" target="_blank" rel="noopener">Designing Discriminative Physics Benchmarks for AI Coding Agents: Evidence from Two Data-Driven Analysis Tasks</a></h3>
+          <p class="pub-meta">
+            NeoSchool Research Program · Mentor: Prof. Gunther Roland (MIT) · TA: Alex Cai
+            <span class="year">Summer 2026</span>
+          </p>
+          <p class="pub-abs">
+            A benchmark stops measuring scientific capability the moment every system solves its
+            task. Across two supervised physics tasks — a damped harmonic oscillator and dE/dx
+            particle identification — we ran five command-line coding agents headlessly for 51
+            scored runs under one dispatch and scoring framework. The control task saturated: all
+            five matched to numerical precision on accuracy, correctness and stability, so the
+            ranking collapsed onto token pricing, and correcting a single cache-accounting
+            convention was enough to reorder the field. The redesigned task withholds a noiseless
+            generator target that has no supervision anywhere in the training data; it separated
+            the same field by more than fourfold on dE/dx estimation (19.8 to 86.6) while
+            classification stayed flat at 48.4 to 53.6 — one agent matched our own physics baseline
+            on accuracy while finishing last on estimation, a failure no accuracy metric would have
+            revealed. Full marks are calibrated to a measured noise floor rather than to
+            perfection, and every ranking is bootstrapped over runs.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Jim Huang, Anson Lin, and Jason Yang.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="physarena-benchmark.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+       <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="nyc-airbnb-compliance.pdf" target="_blank" rel="noopener">NYC Airbnb Compliance Analysis: Detecting “Shadow Listings” under Local Law 18</a></h3>
+          <p class="pub-meta">
+            TECH-UB 57 Data Science and AI for Business, NYU Stern · Prof. Chris Volinsky
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            New York's Local Law 18 is enforced reactively, and the hosts most worth catching are
+            the ones who edit their listing fields to look compliant. Working from 36,111 Inside
+            Airbnb listings, we built a rule-based proxy label for illegality and trained six
+            classifiers to rank the surface-compliant pool by violation risk; Random Forest reached
+            a test AUC of 0.9892 and was chosen over a marginally better soft-voting ensemble for
+            its SHAP interpretability. A Monte Carlo simulation of audit outcomes, paired with a
+            cost-benefit matrix drawn from the LL18 fine schedule, showed that under a realistic
+            1,000-inspection budget the model-driven audit list hits violations 82.8% of the time
+            against 9.1% for random selection — an incremental $1.84M per cycle. Delivered with a
+            Streamlit dashboard for OSE field dispatch.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Tanzim Ali, Josh Kwon, and Ziyu Tian.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="nyc-airbnb-compliance.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Case Report</span>
+          <h3 class="pub-title"><a href="forecasting-project-2.pdf" target="_blank" rel="noopener">Forecasting the Invesco QQQ Trust with an ARIMA–GARCH Model</a></h3>
+          <p class="pub-meta">
+            STAT-GB 6018 Forecasting Time Series Data, NYU Stern · Prof. Avi Giloni
+            <span class="year">Fall 2025</span>
+          </p>
+          <p class="pub-abs">
+            Fits an ARIMA(2,1,2) model to five years of daily log adjusted close prices for QQQ,
+            then shows that although the residuals are uncorrelated they are not independent —
+            the squared residuals remain significantly autocorrelated. Adding a GARCH(1,1) layer
+            captures the volatility clustering and yields a narrower one-step-ahead 95% forecast
+            interval than the ARIMA-only model, with an empirical failure rate of 5.1% against a
+            nominal 5%. A normal probability plot of the standardised residuals shows the model
+            still does not fully absorb the leptokurtosis in the data.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="forecasting-project-2.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Case Report</span>
+          <h3 class="pub-title"><a href="forecasting-project-1.pdf" target="_blank" rel="noopener">An ARIMA Model for U.S. Total Consumer Credit, 1967–2025</a></h3>
+          <p class="pub-meta">
+            STAT-GB 6018 Forecasting Time Series Data, NYU Stern · Prof. Avi Giloni
+            <span class="year">Fall 2025</span>
+          </p>
+          <p class="pub-abs">
+            Models 58 years of monthly FRED data on total consumer credit owned and securitized.
+            A log transform linearises the exponential growth and a single difference achieves
+            stationarity; AICc selects ARIMA(1,1,1) with a constant, whose parameters are all
+            significant at the 5% level and whose residuals pass Ljung–Box tests at every lag
+            examined. The fitted model forecasts 150 months forward with 95% intervals that widen
+            as expected with the horizon.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="forecasting-project-1.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Case Report</span>
+          <h3 class="pub-title"><a href="case-ford-vep.pdf" target="_blank" rel="noopener">Ford's Value Enhancement Plan: Returning $10 Billion Without Losing Control</a></h3>
+          <p class="pub-meta">
+            BUSF-SHU 303 Corporate Finance, NYU Shanghai · Prof. Guodong Chen
+            <span class="year">Spring 2025</span>
+          </p>
+          <p class="pub-abs">
+            By 2000 Ford was sitting on $23 billion in cash — roughly 40% of its market
+            capitalization — with a lagging stock price. We argue the payout was justified, compare
+            it against dividends and open-market repurchases, and work through why the VEP's
+            one-for-one exchange plus a $20 cash-or-stock election served long-term holders better
+            than a buyback would have. The plan delivered on value and flexibility, but we side
+            with TIAA-CREF and CalPERS on governance: preserving the Ford family's 40% voting power
+            while its economic stake fell toward 3.6% is hard to defend on one-share-one-vote grounds.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            With Henry He.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="case-ford-vep.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Case Report</span>
+          <h3 class="pub-title"><a href="case-mci.pdf" target="_blank" rel="noopener">MCI Communications: Financing a Challenger, 1972–1988</a></h3>
+          <p class="pub-meta">
+            BUSF-SHU 303 Corporate Finance, NYU Shanghai · Prof. Guodong Chen
+            <span class="year">Spring 2025</span>
+          </p>
+          <p class="pub-abs">
+            Traces MCI's financing through three phases — equity for survival, lease financing to
+            work around loan covenants, then convertibles once the Execunet restrictions lifted —
+            and shows each choice following from the constraint the firm faced at the time. Building
+            the funds-flow forecast from the case exhibits puts external financing needs for FY84–88
+            near $3.5 billion, varying roughly ±30% under our good and bad scenarios. Of the CFO's
+            five options we recommend the $600 million 7.625% convertible debenture: the $54
+            conversion price sits above the $47 share price, so it raises capital now and defers
+            dilution until the stock justifies it.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            With Henry He.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="case-mci.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Case Report</span>
+          <h3 class="pub-title"><a href="case-american-chemical.pdf" target="_blank" rel="noopener">American Chemical Corporation: Valuing the Collinsville Plant</a></h3>
+          <p class="pub-meta">
+            BUSF-SHU 303 Corporate Finance, NYU Shanghai · Prof. Guodong Chen
+            <span class="year">Spring 2025</span>
+          </p>
+          <p class="pub-abs">
+            Identifies Pennwalt and Kerr-McGee as the closest comparables to the Collinsville
+            sodium chlorate plant, unlevers their equity betas to an asset beta of 0.899, and
+            arrives at a 15.79% discount rate under CAPM. On those terms the plant is worth
+            −$3.80 million without the laminate technology and marginally positive with it — a
+            result thin enough that the recommendation turns on judgment rather than the number.
+            We argue against the purchase: the projections assume a single product, a single
+            regional market, and power costs at 55–60% of manufacturing expense, none of which
+            the comparables share.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            With Henry He.
+          </p>
+          <div class="pub-links">
+            <a class="chip" href="case-american-chemical.pdf" target="_blank" rel="noopener">PDF</a>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects">
+    <div class="sec-head reveal">
+      <span class="sec-num">02</span>
+      <h2 class="sec-title">Selected Projects</h2>
+    </div>
+
+    <ol class="pub-list">
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Internship Project</span>
+          <h3 class="pub-title">Quant-Agent: An LLM Pipeline for Reproducing Quant Research Reports into Runnable Backtest Code</h3>
+          <p class="pub-meta">
+            Summer Internship, Fullgoal Fund Management Co.,ltd.
+            <span class="year">Summer 2026</span>
+          </p>
+          <p class="pub-abs">
+            Independent project built end-to-end during the internship: a pipeline that turns a
+            Chinese sell-side quant research report (PDF) into runnable, self-healing backtest code.
+            A LangGraph state machine wires together five LLM-driven stages — a parsing agent that
+            extracts a structured strategy schema (factors, data requirements, backtest parameters,
+            the report's own disclosed performance numbers) from unstructured report text; a data
+            agent that auto-fetches required market data from an internal Doris warehouse with
+            month-level adaptive chunking to avoid silent row-limit truncation on multi-year
+            full-market queries, falling back to manual upload when a field isn't available; a
+            code-generation agent that implements the strategy step-by-step against the parsed
+            schema; a sandboxed execution agent with syntax-checked self-heal retries and
+            rule-based fake-success detection (catching all-zero metrics, NaN, impossible
+            drawdowns, and equity-curve magnitude blowups); and an iterative refinement agent that
+            diagnoses the gap between reproduced results and the report's disclosed performance and
+            rewrites the generation prompt accordingly. Applied to a structured multi-factor
+            risk-model report from Huatai Securities, the pipeline reproduces the full 2011–2019
+            backtest end-to-end but surfaces a genuine methodological gap: reproduced excess return
+            stays near zero against the report's claimed 17–23%, isolating the limits of
+            prompt-driven strategy reproduction versus true alpha-signal fidelity.
+          </p>
+          <p class="pub-abs">
+            Note that the codebase, web interface, and generated notebooks are written in Chinese.
+          </p>
+          <div class="shots">
+            <a href="quant-agent-1.png" target="_blank" rel="noopener"><img src="quant-agent-1.png" alt="Five-agent LangGraph pipeline architecture: parser, data, code, executor, and iterative-refinement agents"></a>
+            <a href="quant-agent-2.png" target="_blank" rel="noopener"><img src="quant-agent-2.png" alt="Sandboxed execution flow with syntax pre-check self-heal retries and rule-based fake-success detection"></a>
+            <a href="quant-agent-3.png" target="_blank" rel="noopener"><img src="quant-agent-3.png" alt="Streamlit dashboard showing backtest results, equity curve, and metrics"></a>
+            <a href="quant-agent-4.png" target="_blank" rel="noopener"><img src="quant-agent-4.png" alt="Multi-round iterative refinement comparison against the report's disclosed performance"></a>
+            <a href="quant-agent-5.png" target="_blank" rel="noopener"><img src="quant-agent-5.png" alt="Data pipeline fix: full-market coverage expanded from 13 months to 9 years after resolving a silent query truncation bug"></a>
+            <a href="quant-agent-6.png" target="_blank" rel="noopener"><img src="quant-agent-6.png" alt="Case study report-fidelity gap: reproduced excess return versus the report's disclosed performance"></a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Research Program</span>
+          <h3 class="pub-title"><a href="COLAB_URL_HERE" target="_blank" rel="noopener">PhysArena: A Benchmark for AI Coding Agents on Physics Discovery Tasks</a></h3>
+          <p class="pub-meta">
+            NeoSchool Research Program · Mentor: Prof. Gunther Roland (MIT) · TA: Alex Cai
+            <span class="year">Summer 2026</span>
+          </p>
+          <p class="pub-abs">
+            Benchmarks five agentic coding CLIs — Claude Code, Codex, Qwen Code, Kimi Code,
+            and CodeBuddy — on physics tasks with hidden ground truth, across 51 headless
+            runs. Agents fit a damped harmonic oscillator from real time series, then
+            identify particle species from 50 Landau-distributed dE/dx measurements per
+            event with undisclosed missing data. Each run is scored 70/30 on deterministic
+            metrics and a DeepSeek judge rubric. Ships two interfaces: a leaderboard for
+            browsing scores and per-dimension breakdowns, and a runner that dispatches new
+            experiments and returns results.
+            For Live Demo 2, the temorary password is: PA-okw4sbb2mp06n1gvxj7kld3g.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Jim Huang, Anson Lin, and Jason Yang.
+          </p>
+          <div class="shots">
+            <a href="physarena-1.png" target="_blank" rel="noopener"><img src="physarena-1.png" alt="Bethe-Bloch dE/dx bands by particle species"></a>
+            <a href="physarena-2.png" target="_blank" rel="noopener"><img src="physarena-2.png" alt="Landau distribution of per-hit measurements"></a>
+            <a href="physarena-3.png" target="_blank" rel="noopener"><img src="physarena-3.png" alt="Truncation fraction scan against hidden ground truth"></a>
+            <a href="physarena-4.png" target="_blank" rel="noopener"><img src="physarena-4.png" alt="Reference baseline confusion matrix"></a>
+            <a href="physarena-5.png" target="_blank" rel="noopener"><img src="physarena-5.png" alt="Effect of prompt specificity across agents"></a>
+            <a href="physarena-6.png" target="_blank" rel="noopener"><img src="physarena-6.png" alt="Leaderboard interface"></a>
+            <a href="physarena-7.png" target="_blank" rel="noopener"><img src="physarena-7.png" alt="Experiment runner interface"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="physarena.ipynb" download="physarena.ipynb" target="_blank" rel="noopener">Notebook</a>
+            <a class="chip" href="https://drive.google.com/file/d/1hjtpGnvqs0VmLWmHvmaKyHNWDv2rO4ck/view?usp=sharing" target="_blank" rel="noopener">Colab</a>
+            <a class="chip" href="https://github.com/jby235278-wq/PhysArena" target="_blank" rel="noopener">Interface</a>
+            <a class="chip" href="https://physarena.onrender.com" target="_blank" rel="noopener">Live Demo 1</a>
+            <a class="chip" href="https://physarena-developer.onrender.com" target="_blank" rel="noopener">Live Demo 2</a>
+            <a class="chip" href="physarena-results.zip" download="physarena-results.zip">Sample Results</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://colab.research.google.com/drive/1Lnp4gGA-eoXbgblNyCDSUwNujiO1SaLn" target="_blank" rel="noopener">NYC Shield: Illegal Housing Detector</a></h3>
+          <p class="pub-meta">
+            TECH-UB 57 Data Science and AI for Business, NYU Stern · Prof. Chris Volinsky
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            The modelling pipeline behind the compliance analysis above. Cleans and engineers
+            features from 36,111 Inside Airbnb listings, trains and compares six classifiers,
+            explains the selected Random Forest with SHAP, and runs a Monte Carlo profit
+            simulation to pick an audit threshold. Ships as a Streamlit dashboard that maps
+            high-risk listings and exports a ranked audit list.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Tanzim Ali, Josh Kwon, and Ziyu Tian.
+          </p>
+          <div class="shots">
+            <a href="nycshield-1.png" target="_blank" rel="noopener"><img src="nycshield-1.png" alt="Little Web 1"></a>
+            <a href="nycshield-2.png" target="_blank" rel="noopener"><img src="nycshield-2.png" alt="Little Web 2"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="nycshield.ipynb" download="nycshield.ipynb" target="_blank" rel="noopener">Notebook</a>
+            <a class="chip" href="https://colab.research.google.com/drive/1Lnp4gGA-eoXbgblNyCDSUwNujiO1SaLn" target="_blank" rel="noopener">Colab</a>
+            <a class="chip" href="https://github.com/superman-zhu/nyc-housing-shield" target="_blank" rel="noopener">Little App</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://github.com/kkrysw/readradar" target="_blank" rel="noopener">ReadRadar: An ML-Powered Book Discovery App</a></h3>
+          <p class="pub-meta">
+            CSCI-UA 473 Fundamentals of Machine Learning, New York University · Prof. Kyunghyun Cho
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            A Streamlit app built on the UCSD Book Graph that lets readers search a 5,000-book
+            catalog by theme, browse it as clusters, and get recommendations from what they
+            have saved. Semantic search runs on Nomic v1.5 embeddings truncated to 384
+            dimensions; recommendations build a recency-weighted persona vector from the
+            favorites list so newer picks pull the results harder; and the catalog is grouped
+            into 24 "Reading Neighborhoods" by spherical k-means++. Retrieval, recommendation
+            scoring, and clustering are all implemented directly in NumPy rather than called
+            from a library. A separate Claude-backed pipeline reads twelve rating-balanced
+            reviews per book and returns grounded controversy tags and a short reader verdict.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Krystal Wu, Bruce Wang, Benji Hua, and Yizhen.
+          </p>
+          <div class="shots">
+            <a href="readradar-6.png" target="_blank" rel="noopener"><img src="readradar-6.png" alt="Thematic search results"></a>
+            <a href="readradar-7.png" target="_blank" rel="noopener"><img src="readradar-7.png" alt="Favorites page"></a>
+            <a href="readradar-8.png" target="_blank" rel="noopener"><img src="readradar-8.png" alt="Recommendations page"></a>
+            <a href="readradar-4.png" target="_blank" rel="noopener"><img src="readradar-4.png" alt="Reading Neighborhoods"></a>
+            <a href="readradar-5.png" target="_blank" rel="noopener"><img src="readradar-5.png" alt="Book Details"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://github.com/kkrysw/readradar" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://github.com/skyexry/PivotPointAI" target="_blank" rel="noopener">PivotPoint AI: Office-to-Residential Conversion Feasibility Scoring</a></h3>
+          <p class="pub-meta">
+            FINC-GB 2328 Data Science and Artificial Intelligence in Real Estate, NYU Stern · Prof. Sam Chandan
+            <span class="year">Spring 2026</span>
+          </p>
+          <p class="pub-abs">
+            Upload a commercial floor plan and an address; PivotPoint returns a 0–100 feasibility
+            score for converting the building to residential use, with violations drawn directly
+            onto the plan and the relevant NYC building code cited alongside. Gemini 2.5 Pro reads
+            the plan for window-to-wall ratio, aspect ratio, and floor-plate depth, but never
+            scores — the score comes from a deterministic 14-subscore formula over PLUTO zoning,
+            landmark, and transit-distance data, so the same building always returns the same
+            number. Code citations are retrieved from a pgvector store of NYC regulations, and the
+            output is packaged as a deal memo an analyst can hand to a client.
+          </p>
+          <p class="pub-abs" style="color:var(--ink-3);font-size:.83rem;margin-top:.5rem">
+            Group project with Skye Xi, Leo Lei, Patrick Suter, and Julia Niehaus.
+          </p>
+          <div class="shots">
+            <a href="pivotpoint-1.png" target="_blank" rel="noopener"><img src="pivotpoint-1.png" alt="Feasibility score view"></a>
+            <a href="pivotpoint-2.png" target="_blank" rel="noopener"><img src="pivotpoint-2.png" alt="Floor plan violation overlay"></a>
+            <a href="pivotpoint-3.png" target="_blank" rel="noopener"><img src="pivotpoint-3.png" alt="Code citation panel"></a>
+            <a href="pivotpoint-4.png" target="_blank" rel="noopener"><img src="pivotpoint-4.png" alt="Feasibility score view"></a>
+            <a href="pivotpoint-5.png" target="_blank" rel="noopener"><img src="pivotpoint-5.png" alt="Floor plan violation overlay"></a>
+            <a href="pivotpoint-6.png" target="_blank" rel="noopener"><img src="pivotpoint-6.png" alt="Code citation panel"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://pivot-point-ai.vercel.app" target="_blank" rel="noopener">Live Demo</a>
+            <a class="chip" href="https://github.com/skyexry/PivotPointAI" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="pub reveal">
+        <div>
+          <span class="pub-tag">Course Project</span>
+          <h3 class="pub-title"><a href="https://github.com/superman-zhu/chat-and-play" target="_blank" rel="noopener">Chat &amp; Play: A LAN Chat Platform with Encryption and a Two-Player Game</a></h3>
+          <p class="pub-meta">
+            CSCI-SHU 101 Introduction to Computer and Data Science, NYU Shanghai · Mingyuan Wang
+            <span class="year">Fall 2024</span>
+          </p>
+          <p class="pub-abs">
+            One server, many clients: register, log in, and chat one-on-one over a custom
+            length-prefixed TCP protocol, with the server multiplexing every socket through
+            <code>select()</code>. Messages in a private chat are encrypted with an RSA keypair
+            generated per exchange — key generation, encryption, and decryption written from
+            scratch rather than pulled from a library. The server indexes every message per user
+            so history is searchable, and a Tkinter front end adds Shakespeare sonnet lookup and
+            a two-player Pygame Snake match you can start from the chat window.
+          </p>
+          <div class="shots">
+            <a href="chatandplay-1.png" target="_blank" rel="noopener"><img src="chatandplay-1.png" alt="Login screen"></a>
+            <a href="chatandplay-2.png" target="_blank" rel="noopener"><img src="chatandplay-2.png" alt="Chat window"></a>
+            <a href="chatandplay-3.png" target="_blank" rel="noopener"><img src="chatandplay-3.png" alt="Encrypted message exchange"></a>
+            <a href="chatandplay-4.png" target="_blank" rel="noopener"><img src="chatandplay-4.png" alt="History search"></a>
+            <a href="chatandplay-5.png" target="_blank" rel="noopener"><img src="chatandplay-5.png" alt="Snake minigame"></a>
+          </div>
+          <div class="pub-links">
+            <a class="chip" href="https://github.com/superman-zhu/chat-and-play" target="_blank" rel="noopener">GitHub</a>
+          </div>
+        </div>
+      </li>
+
+    </ol>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <span>© <span id="yr">2026</span> Jiaqi Zhu · NYU Shanghai</span>
+    <div class="foot-links">
+      <a href="mailto:jz6553@nyu.edu">Email</a>
+      <a href="https://www.linkedin.com/in/jiaqi-zhu-22a866370/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="cv_2.pdf" target="_blank" rel="noopener">CV</a>
+    </div>
+  </footer>
+
+</main>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+  <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
+  <button class="lb-nav lb-prev" id="lbPrev" aria-label="Previous">&#8249;</button>
+  <img id="lbImg" src="" alt="">
+  <button class="lb-nav lb-next" id="lbNext" aria-label="Next">&#8250;</button>
+  <span class="lb-count" id="lbCount"></span>
+</div>
+
+<script>
+// Theme: follow the OS by default, allow manual override, remember the choice.
+(function(){
+  var root=document.documentElement, KEY='theme';
+  var saved=null;
+  try{ saved=localStorage.getItem(KEY); }catch(e){}
+  var dark = saved ? saved==='dark'
+                   : window.matchMedia('(prefers-color-scheme:dark)').matches;
+  root.setAttribute('data-theme', dark?'dark':'light');
+  document.getElementById('themeBtn').addEventListener('click',function(){
+    var next = root.getAttribute('data-theme')==='dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme',next);
+    try{ localStorage.setItem(KEY,next); }catch(e){}
+  });
+})();
+
+// Hairline under the nav bar once the page is scrolled.
+(function(){
+  var nav=document.getElementById('nav');
+  var onScroll=function(){ nav.classList.toggle('scrolled', window.scrollY>8); };
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+})();
+
+// Fade elements in as they enter the viewport.
+(function(){
+  var items=document.querySelectorAll('.reveal');
+  if(!('IntersectionObserver' in window)){
+    items.forEach(function(el){el.classList.add('in')}); return;
+  }
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e,i){
+      if(e.isIntersecting){
+        e.target.style.transitionDelay=(Math.min(i,5)*55)+'ms';
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){io.observe(el)});
+})();
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Lightbox: click a thumbnail to view it full size without leaving the page.
+(function(){
+  var box=document.getElementById('lightbox'),
+      img=document.getElementById('lbImg'),
+      count=document.getElementById('lbCount'),
+      prev=document.getElementById('lbPrev'),
+      next=document.getElementById('lbNext'),
+      group=[], idx=0;
+
+  function show(i){
+    box.classList.remove('zoom');
+    idx=(i+group.length)%group.length;
+    var a=group[idx], thumb=a.querySelector('img');
+    img.src=a.getAttribute('href');
+    img.alt=thumb?thumb.alt:'';
+    count.textContent=group.length>1 ? (idx+1)+' / '+group.length : '';
+  }
+  function open(a){
+    group=Array.prototype.slice.call(a.closest('.shots').querySelectorAll('a'));
+    var many=group.length>1;
+    prev.style.display=next.style.display=many?'':'none';
+    show(group.indexOf(a));
+    box.classList.add('open');
+    requestAnimationFrame(function(){ box.classList.add('shown'); });
+    document.body.style.overflow='hidden';
+  }
+  function close(){
+    box.classList.remove('shown','zoom');
+    document.body.style.overflow='';
+    setTimeout(function(){ box.classList.remove('open'); img.src=''; },260);
+  }
+
+  document.addEventListener('click',function(e){
+    if(!e.target.closest) return;
+    var a=e.target.closest('.shots a');
+    if(a){ e.preventDefault(); open(a); }
+  });
+  img.addEventListener('click',function(e){
+    e.stopPropagation();
+    box.classList.toggle('zoom');
+    box.scrollTop=0;
+  });
+  document.getElementById('lbClose').addEventListener('click',close);
+  prev.addEventListener('click',function(e){ e.stopPropagation(); show(idx-1); });
+  next.addEventListener('click',function(e){ e.stopPropagation(); show(idx+1); });
+  box.addEventListener('click',function(e){ if(e.target===box) close(); });
+  document.addEventListener('keydown',function(e){
+    if(!box.classList.contains('open')) return;
+    if(e.key==='Escape') close();
+    if(e.key==='ArrowLeft') show(idx-1);
+    if(e.key==='ArrowRight') show(idx+1);
+  });
+})();
+
+</script>
+</body>
+</html>
